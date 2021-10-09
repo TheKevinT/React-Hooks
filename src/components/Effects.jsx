@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 const Effects = () => {
   //crear un state para traer usuarios
   const [users, setUsers] = useState([]);
+  //crear un state para id de usuarios
+  const [id, setId] = useState(10);
 
   //traer la data una sola vez
   useEffect(() => {
@@ -17,7 +19,17 @@ const Effects = () => {
       );
   }, []);
 
-  console.log(users);
+  //crear otro efecto para hacer otra petición diferente
+  //la dependencia que va estar escuchando es el Id
+  //se ejecuta cuando el ID cambie
+  useEffect(() => {
+      setUsers([{
+          hola:'cambio en ID'
+      }])
+      console.log(users)
+  }, [id]);
+
+//   console.log(users);
 
   const _handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +44,9 @@ const Effects = () => {
             Search
           </label>
           <input
-            type="email"
+            type="text"
+            value={id}
+            onChange={(e) =>setId(e.target.value)}
             className="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
