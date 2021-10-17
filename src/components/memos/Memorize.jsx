@@ -1,13 +1,14 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
+import Btn from "../memos/Btn";
 import Dato from "./Dato";
 
 const Memorize = () => {
   const [counter, setCounter] = useState(5);
   const [view, setView] = useState(true);
 
-  const _hadleClick = () => {
-    setCounter(counter + 1);
-  };
+  //   const _hadleClick = () => {
+  //     setCounter(counter + 1);
+  //   };
 
   const pesado = (iter) => {
     for (let i = 0; i < iter; i++) {
@@ -20,6 +21,13 @@ const Memorize = () => {
 
   const pesadoMemo = useMemo(() => pesado(counter), [counter]);
 
+  //USE CALLBACK permite enviar una funcion
+  //se indica una dependencia que no va cambiar
+
+  const _hadleClick = useCallback(() => {
+    setCounter((actual) => actual + 1);
+  }, [setCounter]);
+
   return (
     <>
       <h1>
@@ -29,7 +37,7 @@ const Memorize = () => {
 
       {pesadoMemo}
 
-      <button onClick={_hadleClick}>+1</button>
+      <Btn _hadle={_hadleClick} />
       <button onClick={() => setView(!view)}>ver/Quitar</button>
     </>
   );
