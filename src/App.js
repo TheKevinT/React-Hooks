@@ -1,7 +1,8 @@
 import React from "react";
+import Memorize from "./components/memos/Memorize";
 // import Effects from "./components/Effects";
 // import LayoutEffect from "./components/LayoutEffect";
-import Ref from "./components/Ref";
+// import Ref from "./components/Ref";
 // import Calculadora from "./components/Calculadora";
 // import State from "./components/State";
 
@@ -10,8 +11,9 @@ const App = () => {
     <>
       <div className="container text-center">
         {/* <Effects />
-        <LayoutEffect /> */}
-        <Ref/>
+        <LayoutEffect /> 
+        <Ref/>*/}
+        <Memorize/>
       </div>
       {/* <div className="container text-center">
         <h1>Calculadora - PWA</h1>
